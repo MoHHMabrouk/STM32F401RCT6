@@ -6,6 +6,15 @@
 #include "GPIO_Conf.h"
 #include "GPIO_Private.h"
 
+void GPIO_voidInit(void) {
+
+	for (GPIO_PINS_t pinNum = PINA0; pinNum < PIN_TOTAL; pinNum++) {
+		if (pinNum <= PINB15 || pinNum >= PINC13) {
+			GPIO_enPinConfig(pinNum, GPIO_pinStatusArray[pinNum]);
+		}
+	}
+}
+
 ERROR_t GPIO_enPinConfig(GPIO_PINS_t copy_enPinNum,
 		GPIO_PIN_MODE_t copy_enPinMode) {
 	GPIO_Port_t local_enPort = copy_enPinNum / 16;

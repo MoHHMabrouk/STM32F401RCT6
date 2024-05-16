@@ -8,6 +8,10 @@
 #ifndef GPIO_INTERFACE_H_
 #define GPIO_INTERFACE_H_
 
+
+//Remeber to remove this
+#include "STD_TYPE.h"
+
 typedef enum {
 	GPIO_OUTPUT_PP = 0b1000,
 	GPIO_OUTPUT_PP_PU = 0b1001,
@@ -99,5 +103,6 @@ ERROR_t GPIO_enPinConfig(GPIO_PINS_t copy_enPinNum,
 ERROR_t GPIO_enPinSet(GPIO_PINS_t copy_enPinNum, GPIO_PIN_OUT_t copy_enPinOut);
 
 ERROR_t GPIO_enPinSetSpeed(GPIO_PINS_t copy_enPinNum, GPIO_SPEED_t copy_enSpeed);
+
 
 #endif /* GPIO_INTERFACE_H_ */
