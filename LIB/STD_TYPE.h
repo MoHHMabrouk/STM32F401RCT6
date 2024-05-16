@@ -17,12 +17,17 @@ typedef unsigned int uint16_t;
 typedef signed long int32_t;
 typedef unsigned long uint32_t;
 
-typedef enum {
-	FALSE = 0, TRUE = 1
+typedef enum
+{
+	FALSE = 0,
+	TRUE = 1
 } BOOL_t;
 
-typedef enum {
-	NULL_PTR = 0, OK, NOK
+typedef enum
+{
+	NULL_PTR = 0,
+	OK,
+	NOK
 } ERROR_t;
 
 #endif /* STD_TYPE_H_ */

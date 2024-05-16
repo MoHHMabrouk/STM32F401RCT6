@@ -1,5 +1,6 @@
 {
     "files.associations": {
-        "mem_map.h": "c"
+        "mem_map.h": "c",
+        "std_type.h": "c"
     }
 }
