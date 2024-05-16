@@ -1,0 +1,1 @@
+MCAL/GPIO/GPIO_Conf.o: ../MCAL/GPIO/GPIO_Conf.c
