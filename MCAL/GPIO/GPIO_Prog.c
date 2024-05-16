@@ -1,5 +1,5 @@
 #include "STD_TYPE.h"
-#include "MEM_MAP.h"
+#include "STM32F4_MEM_MAP.h"
 #include "BIT_MATH.h"
 
 #include "GPIO_Interface.h"
@@ -48,15 +48,15 @@ ERROR_t GPIO_enPinSet(GPIO_PINS_t copy_enPinNum, GPIO_PIN_OUT_t copy_enPinOut) {
 	if (copy_enPinOut == LOW) {
 		switch (local_enPort) {
 		case PORTA:
-			SET_BIT(GPIOA->GPIO_BSRR, local_enPin);
+			CLR_BIT(GPIOA->GPIO_ODR, local_enPin);
 			break;
 
 		case PORTB:
-			SET_BIT(GPIOB->GPIO_BSRR, local_enPin);
+			CLR_BIT(GPIOB->GPIO_ODR, local_enPin);
 			break;
 
 		case PORTC:
-			SET_BIT(GPIOC->GPIO_BSRR, local_enPin);
+			CLR_BIT(GPIOC->GPIO_ODR, local_enPin);
 			break;
 
 		default:
@@ -65,15 +65,15 @@ ERROR_t GPIO_enPinSet(GPIO_PINS_t copy_enPinNum, GPIO_PIN_OUT_t copy_enPinOut) {
 	} else if (copy_enPinOut == HIGH) {
 		switch (local_enPort) {
 		case PORTA:
-			SET_BIT(GPIOA->GPIO_BSRR, (local_enPin * 2));
+			SET_BIT(GPIOA->GPIO_ODR, (local_enPin));
 			break;
 
 		case PORTB:
-			SET_BIT(GPIOB->GPIO_BSRR, (local_enPin * 2));
+			SET_BIT(GPIOB->GPIO_ODR, (local_enPin));
 			break;
 
 		case PORTC:
-			SET_BIT(GPIOC->GPIO_BSRR, (local_enPin * 2));
+			SET_BIT(GPIOC->GPIO_ODR, (local_enPin));
 			break;
 
 		default:

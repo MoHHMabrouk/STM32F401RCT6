@@ -7,19 +7,19 @@
 
 #include "STD_TYPE.h"
 #include "BIT_MATH.h"
-#include "MEM_MAP.h"
+#include "STM32F4_MEM_MAP.h"
 #include "RCC_Interface.h"
 #include "RCC_Conf.h"
 
 void RCC_voidSysClkEn(void)
 {
 #if RCC_u8CLK_TYPE == RCC_u8HSE_CRYSTAL
-	RCC->RCC_CR = 0x00010080;
+	RCC->RCC_CR = 0x00000080;
 #elif RCC_u8CLK_TYPE == RCC_u8HSE_RC
 	RCC->RCC_CR = 0x00050080;
 #elif RCC_u8CLK_TYPE == RCC_u8HSI
 	RCC->RCC_CR = 0x00000081;
-	RCC->RCC_CFGR = 0x00000000;
+	//RCC->RCC_CFGR = 0x00000000;
 #elif RCC_u8CLK_TYPE == RCC_u8PLL
 #if RCC_u8PLL_INPUT == RCC_u8PLL_HSI_DIV_2
 #elif RCC_u8PLL_INPUT == RCC_u8PLL_HSE_DIV_2

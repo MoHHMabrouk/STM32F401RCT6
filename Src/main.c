@@ -9,6 +9,11 @@ int main(void) {
 	GPIO_enPinSet(PINA12, HIGH);
 	while (1) {
 
+		GPIO_enPinSet(PINA12, HIGH);
+		for(int i=0;i<100000;i++);
+		GPIO_enPinSet(PINA12, LOW);
+		for(int i=0;i<100000;i++);
+
 	}
 
 }
