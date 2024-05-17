@@ -8,27 +8,58 @@
 #ifndef GPIO_INTERFACE_H_
 #define GPIO_INTERFACE_H_
 
-
 //Remeber to remove this
 #include "STD_TYPE.h"
 
+/*
+ typedef enum {
+ GPIO_OUTPUT_PP = 0b1000,
+ GPIO_OUTPUT_PP_PU = 0b1001,
+ GPIO_OUTPUT_PP_PD = 0b1010,
+ GPIO_OUTPUT_OD = 0b1100,
+ GPIO_OUTPUT_OD_PU = 0b1101,
+ GPIO_OUTPUT_OD_PD = 0b1110,
+ GPIO_AF_PP = 0b10000,
+ GPIO_AF_PP_PU = 0b10001,
+ GPIO_AF_PP_PD = 0b10010,
+ GPIO_AF_OD = 0b10100,
+ GPIO_AF_OD_PU = 0b10101,
+ GPIO_AF_OD_PD = 0b10110,
+ GPIO_INPUT_FLOATING = 0b0,
+ GPIO_INPUT_PU = 0b1,
+ GPIO_INPUT_PD = 0b10,
+ GPIO_IN_OUT_ANALOG = 0b11
+ } GPIO_PIN_MODE_t;
+ */
+
+// Mode : input - General Output - Alternative Function - Analog Function
+// OTYPER : Output push pull - Output open drain
+// OSPEEDER : Low speed - Meduim speed - High speed - Very high speed
+// PUPDR : No pull-up - pull down
 typedef enum {
-	GPIO_OUTPUT_PP = 0b1000,
-	GPIO_OUTPUT_PP_PU = 0b1001,
-	GPIO_OUTPUT_PP_PD = 0b1010,
-	GPIO_OUTPUT_OD = 0b1100,
-	GPIO_OUTPUT_OD_PU = 0b1101,
-	GPIO_OUTPUT_OD_PD = 0b1110,
-	GPIO_AF_PP = 0b10000,
-	GPIO_AF_PP_PU = 0b10001,
-	GPIO_AF_PP_PD = 0b10010,
-	GPIO_AF_OD = 0b10100,
-	GPIO_AF_OD_PU = 0b10101,
-	GPIO_AF_OD_PD = 0b10110,
-	GPIO_INPUT_FLOATING = 0b0,
-	GPIO_INPUT_PU = 0b1,
-	GPIO_INPUT_PD = 0b10,
-	GPIO_IN_OUT_ANALOG = 0b11
+	MODER_INPUT = 0x0, MODER_OUTPUT, MODER_ALTERNATIVE_FUNC, MODER_ANALOG_FUNC,
+} MODER_t;
+
+typedef enum {
+	OTYPER_OUTPUT_PUSH_PULL = 0x0, OTYPER_OUTPUT_OPEN_DRAIN
+} OTYPER_t;
+
+typedef enum {
+	OSPEEDER_LOW_SPEED = 0x0,
+	OSPEEDER_MEDUIM_SPEED,
+	OSPEEDER_HIGH_SPEED,
+	OSPEEDER_VERY_HIGH_SPEED
+} OSPEEDR_t;
+
+typedef enum {
+	PUPDR_NO_PULL_UP_PULL_DOWN = 0x0, PUPDR_PULL_UP, PUPDR_PULL_DOWN
+} PUPDR_t;
+
+typedef struct {
+	MODER_t MODER;
+	OTYPER_t OTYPER;
+	OSPEEDR_t OSPEEDER;
+	PUPDR_t PUPDR;
 } GPIO_PIN_MODE_t;
 
 typedef enum {
@@ -103,6 +134,5 @@ ERROR_t GPIO_enPinConfig(GPIO_PINS_t copy_enPinNum,
 ERROR_t GPIO_enPinSet(GPIO_PINS_t copy_enPinNum, GPIO_PIN_OUT_t copy_enPinOut);
 
 ERROR_t GPIO_enPinSetSpeed(GPIO_PINS_t copy_enPinNum, GPIO_SPEED_t copy_enSpeed);
-
 
 #endif /* GPIO_INTERFACE_H_ */

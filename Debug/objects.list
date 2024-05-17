@@ -1,4 +1,4 @@
-"./MCAL/GPIO/GPIO_Conf.o"
+"./Configs/GPIO_Conf.o"
 "./MCAL/GPIO/GPIO_Prog.o"
 "./MCAL/RCC/RCC_Prog.o"
 "./Src/main.o"
